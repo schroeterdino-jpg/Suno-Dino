@@ -22,6 +22,14 @@
       <div>
         <label class="text-xs font-bold text-stone-300 block mb-1">Genre / Style</label>
         <select id="genre-select" class="w-full bg-stone-700 border border-stone-600 rounded-xl p-2.5 text-xs font-bold text-white focus:outline-none focus:border-red-500">
+          <optgroup label="Balkan & Oriental & Osteuropa">
+            <option value="Balkan Pop-Ballad, acoustic guitar, melancholic accordion, emotional strings, slow sad melody">Balkan / Rumänien Ballade (Traurig) 🌧️</option>
+            <option value="Romanian Manele, energetic accordion, fast percussion, emotional synth">Romanian Manele (Party) 🇷🇴</option>
+            <option value="Polish Disco Polo, fast synthesizer, catchy upbeat dance beat, energetic accordion">Disco Polo / Polish Dance 🇵🇱</option>
+            <option value="Balkan Trap, brass section, heavy oriental synth, modern trap bass">Balkan Trap (Modern) 🎺</option>
+            <option value="Turkish Pop/Rap, saz hooks, darbuka groove, modern trap bass">Turkish Pop-Rap 🪕</option>
+            <option value="Turkish Ballad, acoustic saz, melancholic strings, slow emotional rhythm">Turkish Ballad 🪕</option>
+          </optgroup>
           <optgroup label="Rap & Hip-Hop">
             <option value="French Afrotrap, bouncy 808, fast brass, melodic auto-tune">French Afrotrap 🇫🇷</option>
             <option value="Deutsch-Türkisch Rap, dark oriental trap beat, heavy bass, catchy hook">Deutsch-Türkisch Rap 🇩🇪🇹🇷</option>
@@ -29,11 +37,10 @@
             <option value="Oldschool Boom Bap, 90s hip-hop beat, vinyl crackle, classic flow">Oldschool Boom Bap 🎤</option>
             <option value="Melodic Trap, emotional guitar, heavy bass">Melodic Trap 🎸</option>
           </optgroup>
-          <optgroup label="Balkan & Oriental">
-            <option value="Romanian Manele, energetic accordion, fast percussion, emotional synth">Romanian Manele 🇷🇴</option>
-            <option value="Balkan Trap, brass section, heavy oriental synth, energetic beat">Balkan Trap 🎺</option>
-            <option value="Turkish Pop/Rap, saz hooks, darbuka groove, modern trap bass">Turkish Pop-Rap 🪕</option>
-            <option value="Turkish Ballad, acoustic saz, melancholic strings, slow emotional rhythm">Turkish Ballad 🌧️</option>
+          <optgroup label="Latin & Mediterranean">
+            <option value="Reggaeton, dembow rhythm, catchy synth, urban latin beat">Reggaeton / Latin 🇪🇸</option>
+            <option value="Italo Pop / Modern Trap, bouncy synth, catchy chorus, melodic vibe">Italo Pop / Modern Trap 🇮🇹</option>
+            <option value="Latin Trap, Spanish guitar, heavy 808 bass, dark vibe">Latin Trap 🎸</option>
           </optgroup>
           <optgroup label="Dance & Electronic">
             <option value="90s Eurodance, fast synthesizer lead, energetic rhythm">90s Eurodance 🎧</option>
@@ -55,12 +62,19 @@
           <label class="text-xs font-bold text-stone-300 block mb-1">🗣️ Sprache</label>
           <select id="lang-select" class="w-full bg-stone-700 border border-stone-600 rounded-xl p-2.5 text-xs font-bold text-white focus:outline-none focus:border-red-500">
             <option value="Deutsch">Deutsch 🇩🇪</option>
+            <option value="Deutsch und Polnisch gemischt">Deutsch-Polnisch 🇩🇪🇵🇱</option>
+            <option value="Deutsch und Türkisch gemischt">Deutsch-Türkisch 🇩🇪🇹🇷</option>
+            <option value="Deutsch und Rumänisch gemischt">Deutsch-Rumänisch 🇩🇪🇷🇴</option>
+            <option value="Deutsch und Spanisch gemischt">Deutsch-Spanisch 🇩🇪🇪🇸</option>
+            <option value="Deutsch und Italienisch gemischt">Deutsch-Italienisch 🇩🇪🇮🇹</option>
+            <option value="Deutsch und Englisch gemischt">Deutsch-Englisch 🇩🇪🇬🇧</option>
+            <option value="Polnisch">Polnisch 🇵🇱</option>
             <option value="Englisch">Englisch 🇬🇧</option>
             <option value="Türkisch">Türkisch 🇹🇷</option>
             <option value="Rumänisch">Rumänisch 🇷🇴</option>
+            <option value="Spanisch">Spanisch 🇪🇸</option>
+            <option value="Italienisch">Italienisch 🇮🇹</option>
             <option value="Französisch">Französisch 🇫🇷</option>
-            <option value="Deutsch und Türkisch gemischt">Deutsch-Türkisch 🇩🇪🇹🇷</option>
-            <option value="Deutsch und Englisch gemischt">Deutsch-Englisch 🇩🇪🇬🇧</option>
           </select>
         </div>
         <div>
@@ -87,8 +101,8 @@
       <div>
         <label class="text-xs font-bold text-stone-300 block mb-1">Stimmung / Vibe</label>
         <select id="vibe-select" class="w-full bg-stone-700 border border-stone-600 rounded-xl p-2.5 text-xs font-bold text-white focus:outline-none focus:border-red-500">
+          <option value="Melancholic, emotional, deep storyline">Melancholisch & Traurig 🌧️</option>
           <option value="Summer Club Hit, energetic, party vibes">Sommer & Party 🎉</option>
-          <option value="Melancholic, emotional, deep storyline">Melancholisch & Emotional 🌧️</option>
           <option value="Aggressive, high energy, fast flow">Aggressiv & Power ⚡</option>
           <option value="Motivational, uplifting, inspiring anthem">Motivation & Power 💪</option>
           <option value="Dark, mysterious, heavy atmosphere">Dunkel & Mystisch 🖤</option>
@@ -98,7 +112,7 @@
       <!-- Thema / Stichworte -->
       <div>
         <label class="text-xs font-bold text-stone-300 block mb-1">Thema / Stichworte / Eigene Vorgaben</label>
-        <input type="text" id="topic-input" placeholder="z. B. Dino am Start, Sommer im Garten..." class="w-full bg-stone-700 border border-stone-600 rounded-xl p-2.5 text-xs font-bold text-white focus:outline-none focus:border-red-500" />
+        <input type="text" id="topic-input" placeholder="z. B. Vermissen, Dino am Start, Sommer..." class="w-full bg-stone-700 border border-stone-600 rounded-xl p-2.5 text-xs font-bold text-white focus:outline-none focus:border-red-500" />
       </div>
 
       <button onclick="generateSong()" id="generate-btn" class="w-full bg-red-600 hover:bg-red-700 text-white font-extrabold p-3 rounded-2xl text-xs shadow-md transition-all">

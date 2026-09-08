@@ -17,15 +17,17 @@
 
     <!-- Einstellungen -->
     <div class="bg-stone-800 p-4 rounded-3xl border border-stone-700 space-y-3 shadow-lg">
+      
+      <!-- Genre -->
       <div>
         <label class="text-xs font-bold text-stone-300 block mb-1">Genre / Style</label>
         <select id="genre-select" class="w-full bg-stone-700 border border-stone-600 rounded-xl p-2.5 text-xs font-bold text-white focus:outline-none focus:border-red-500">
           <optgroup label="Rap & Hip-Hop">
-            <option value="French Afrotrap, bouncy 808, fast brass, auto-tuned vocals">French Afrotrap 🇫🇷</option>
+            <option value="French Afrotrap, bouncy 808, fast brass, melodic auto-tune">French Afrotrap 🇫🇷</option>
             <option value="Deutsch-Türkisch Rap, dark oriental trap beat, heavy bass, catchy hook">Deutsch-Türkisch Rap 🇩🇪🇹🇷</option>
             <option value="Deutschrap Drill, dark sliding 808, aggressive cadence, fast hi-hats">Deutschrap Drill 🔪</option>
             <option value="Oldschool Boom Bap, 90s hip-hop beat, vinyl crackle, classic flow">Oldschool Boom Bap 🎤</option>
-            <option value="Melodic Trap, emotional guitar, auto-tune, heavy bass">Melodic Trap 🎸</option>
+            <option value="Melodic Trap, emotional guitar, heavy bass">Melodic Trap 🎸</option>
           </optgroup>
           <optgroup label="Balkan & Oriental">
             <option value="Romanian Manele, energetic accordion, fast percussion, emotional synth">Romanian Manele 🇷🇴</option>
@@ -34,19 +36,54 @@
             <option value="Turkish Ballad, acoustic saz, melancholic strings, slow emotional rhythm">Turkish Ballad 🌧️</option>
           </optgroup>
           <optgroup label="Dance & Electronic">
-            <option value="90s Eurodance, fast synthesizer lead, female vocals, energetic 138 bpm">90s Eurodance 🎧</option>
-            <option value="Hands Up, Commercial Dance, pitched vocals, fast synth melody, 140 bpm">2000s Hands Up 🙌</option>
+            <option value="90s Eurodance, fast synthesizer lead, energetic rhythm">90s Eurodance 🎧</option>
+            <option value="Hands Up, Commercial Dance, pitched synth melody, fast beat">2000s Hands Up 🙌</option>
             <option value="Techno Peaktime, driving acid bassline, hard kick, raw rave vibe">Hard Techno / Rave ⚡</option>
             <option value="Deep House, smooth bassline, atmospheric pads, chill groove">Deep House 🍸</option>
           </optgroup>
           <optgroup label="Pop & Rock">
             <option value="80s Synthwave, retro analog synth, drum machine, nostalgic vibe">80s Synthwave 🌌</option>
             <option value="Pop Rock, energetic electric guitar, driving drums, anthem hook">Pop Rock 🎸</option>
-            <option value="Acoustic Singer-Songwriter, acoustic guitar, intimate vocals, warm feel">Acoustic Pop 🪕</option>
+            <option value="Acoustic Singer-Songwriter, acoustic guitar, intimate warm feel">Acoustic Pop 🪕</option>
           </optgroup>
         </select>
       </div>
 
+      <!-- Feineinstellungen: Sprache, Stimme & Tempo -->
+      <div class="grid grid-cols-3 gap-2">
+        <div>
+          <label class="text-xs font-bold text-stone-300 block mb-1">🗣️ Sprache</label>
+          <select id="lang-select" class="w-full bg-stone-700 border border-stone-600 rounded-xl p-2.5 text-xs font-bold text-white focus:outline-none focus:border-red-500">
+            <option value="Deutsch">Deutsch 🇩🇪</option>
+            <option value="Englisch">Englisch 🇬🇧</option>
+            <option value="Türkisch">Türkisch 🇹🇷</option>
+            <option value="Rumänisch">Rumänisch 🇷🇴</option>
+            <option value="Französisch">Französisch 🇫🇷</option>
+            <option value="Deutsch und Türkisch gemischt">Deutsch-Türkisch 🇩🇪🇹🇷</option>
+            <option value="Deutsch und Englisch gemischt">Deutsch-Englisch 🇩🇪🇬🇧</option>
+          </select>
+        </div>
+        <div>
+          <label class="text-xs font-bold text-stone-300 block mb-1">🎤 Stimme</label>
+          <select id="vocal-select" class="w-full bg-stone-700 border border-stone-600 rounded-xl p-2.5 text-xs font-bold text-white focus:outline-none focus:border-red-500">
+            <option value="male vocals">Männlich 👨</option>
+            <option value="female vocals">Weiblich 👩</option>
+            <option value="duet, male and female vocals">Duett 🧑‍🤝‍🧑</option>
+            <option value="no vocals, instrumental">Instrumental 🎼</option>
+          </select>
+        </div>
+        <div>
+          <label class="text-xs font-bold text-stone-300 block mb-1">⚡ Tempo</label>
+          <select id="tempo-select" class="w-full bg-stone-700 border border-stone-600 rounded-xl p-2.5 text-xs font-bold text-white focus:outline-none focus:border-red-500">
+            <option value="128 bpm, fast pace">Schnell (128 BPM)</option>
+            <option value="140 bpm, fast energetic tempo">Extrem (140 BPM)</option>
+            <option value="95 bpm, mid-tempo groove">Mittel (95 BPM)</option>
+            <option value="75 bpm, slow tempo">Langsam (75 BPM)</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Stimmung -->
       <div>
         <label class="text-xs font-bold text-stone-300 block mb-1">Stimmung / Vibe</label>
         <select id="vibe-select" class="w-full bg-stone-700 border border-stone-600 rounded-xl p-2.5 text-xs font-bold text-white focus:outline-none focus:border-red-500">
@@ -58,6 +95,7 @@
         </select>
       </div>
 
+      <!-- Thema / Stichworte -->
       <div>
         <label class="text-xs font-bold text-stone-300 block mb-1">Thema / Stichworte / Eigene Vorgaben</label>
         <input type="text" id="topic-input" placeholder="z. B. Dino am Start, Sommer im Garten..." class="w-full bg-stone-700 border border-stone-600 rounded-xl p-2.5 text-xs font-bold text-white focus:outline-none focus:border-red-500" />
@@ -70,6 +108,16 @@
 
     <!-- Output Bereich -->
     <div id="output-section" class="space-y-3 hidden">
+      
+      <!-- Songtitel -->
+      <div class="bg-stone-800 p-4 rounded-3xl border border-stone-700 space-y-2 shadow-lg">
+        <div class="flex justify-between items-center">
+          <span class="text-xs font-extrabold text-red-400 uppercase tracking-wider">Songtitel (Suno)</span>
+          <button onclick="copyToClipboard('title-output')" class="bg-stone-700 hover:bg-stone-600 text-xs font-bold px-2.5 py-1 rounded-xl">📋 Kopieren</button>
+        </div>
+        <input type="text" id="title-output" class="w-full text-xs font-bold bg-stone-900 p-3 rounded-xl border border-stone-700/80 text-amber-400 focus:outline-none focus:border-red-500">
+      </div>
+
       <!-- Suno Style Prompt -->
       <div class="bg-stone-800 p-4 rounded-3xl border border-stone-700 space-y-2 shadow-lg">
         <div class="flex justify-between items-center">

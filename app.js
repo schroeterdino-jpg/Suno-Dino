@@ -32,27 +32,34 @@ async function generateSong() {
   }
 
   const genre = document.getElementById('genre-select').value;
+  const lang = document.getElementById('lang-select').value;
+  const vocal = document.getElementById('vocal-select').value;
+  const tempo = document.getElementById('tempo-select').value;
   const vibe = document.getElementById('vibe-select').value;
   const btn = document.getElementById('generate-btn');
 
-  btn.innerText = "⏳ Generiere Song & Prompts...";
+  btn.innerText = "⏳ Generiere Titel, Song & Prompts...";
   btn.disabled = true;
 
   const systemPrompt = `Du bist ein hochklassiger Songwriter und Musikproduzent für Suno AI und TikTok.
 
 Erstelle basierend auf den Wünschen des Nutzers:
-1. Einen englischen "Style Prompt" für Suno AI (max. 120 Zeichen, Instrumente, Genre, Vibe, Vocals).
-2. Einen vollständigen, rythmischen Songtext mit Suno-Metatags wie [Intro], [Verse 1], [Chorus], [Bridge], [Outro]. Bau alle Vorgaben und Namen des Nutzers flexibel und passend ein.
+1. Einen eingängigen Songtitel (maximal 4 Worte).
+2. Einen englischen "Style Prompt" für Suno AI (maximal 120 Zeichen, kombinierte Vorgaben aus Instrumenten, Vocals, Tempo und Vibe).
+3. Einen vollständigen, rythmischen Songtext IN DER ANGEGEBENEN SPRACHE mit Suno-Metatags wie [Intro], [Verse 1], [Chorus], [Bridge], [Outro].
 
-WICHTIG: Antworte EXAKT in diesem Format und schreibe sonst keinen Text:
+WICHTIG: Antworte EXAKT in diesem Format und schreibe sonst KEINEN zusätzlichen Text:
+
+[TITLE]
+(Hier der prägnante Songtitel)
 
 [STYLE_PROMPT]
 (Hier der englische Suno-Style)
 
 [LYRICS]
-(Hier der vollständige Songtext mit Metatags)`;
+(Hier der vollständige Songtext in der gewünschten Sprache mit Metatags)`;
 
-  const userPrompt = `Genre/Stil: ${genre}\nStimmung: ${vibe}\nThema/Stichworte: ${topic}`;
+  const userPrompt = `Genre/Stil: ${genre}\nSprache des Songtexts: ${lang}\nGesang: ${vocal}\nTempo: ${tempo}\nStimmung: ${vibe}\nThema/Stichworte: ${topic}`;
 
   try {
     const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
@@ -76,12 +83,15 @@ WICHTIG: Antworte EXAKT in diesem Format und schreibe sonst keinen Text:
     if (response.ok && data.choices && data.choices[0]?.message?.content) {
       const fullContent = data.choices[0].message.content;
 
+      const titleMatch = fullContent.match(/\[TITLE\]([\s\S]*?)\[STYLE_PROMPT\]/);
       const styleMatch = fullContent.match(/\[STYLE_PROMPT\]([\s\S]*?)\[LYRICS\]/);
       const lyricsMatch = fullContent.split('[LYRICS]')[1];
 
-      const styleText = styleMatch ? styleMatch[1].trim() : `${genre}, ${vibe}`;
+      const titleText = titleMatch ? titleMatch[1].trim() : topic;
+      const styleText = styleMatch ? styleMatch[1].trim() : `${genre}, ${vocal}, ${tempo}, ${vibe}`;
       const lyricsText = lyricsMatch ? lyricsMatch.trim() : fullContent;
 
+      document.getElementById('title-output').value = titleText;
       document.getElementById('style-output').value = styleText;
       document.getElementById('lyrics-output').value = lyricsText;
       document.getElementById('output-section').classList.remove('hidden');
@@ -97,8 +107,9 @@ WICHTIG: Antworte EXAKT in diesem Format und schreibe sonst keinen Text:
 }
 
 function copyToClipboard(elementId) {
-  const textarea = document.getElementById(elementId);
-  textarea.select();
-  navigator.clipboard.writeText(textarea.value);
+  const el = document.getElementById(elementId);
+  el.select();
+  const val = el.value || el.innerText;
+  navigator.clipboard.writeText(val);
   alert("In die Zwischenablage kopiert! 📋");
 }

@@ -1,4 +1,3 @@
-// Key sicher lokal abfragen
 function getGroqApiKey() {
   let key = localStorage.getItem('dino_suno_groq_key');
   if (!key || key.trim() === '' || key.startsWith('gsk_...')) {
@@ -39,20 +38,21 @@ async function generateSong() {
   btn.innerText = "⏳ Generiere Song & Prompts...";
   btn.disabled = true;
 
-  const systemPrompt = `Du bist ein professioneller Songwriter und Musikproduzent für Suno AI und TikTok.
-Deine Aufgabe:
-1. Erstelle einen extrem knackigen, englischen "Style Prompt" für Suno AI (maximal 120 Zeichen, beschreibe Instrumente, BPM, Genre und Gesangsstil).
-2. Schreibe einen vollständigen Songtext (Deutsch/Türkisch/Rumänisch/Französisch je nach Genre) mit korrekten Suno-Metatags wie [Intro], [Verse 1], [Chorus], [Bridge], [Outro].
-3. STRIKTE REGEL: Verwende NIEMALS den Namen "Dino" oder irgendeinen persönlichen Namen im Songtext!
-4. Formatieren deine Antwort EXAKT so:
+  const systemPrompt = `Du bist ein hochklassiger Songwriter und Musikproduzent für Suno AI und TikTok.
+
+Erstelle basierend auf den Wünschen des Nutzers:
+1. Einen englischen "Style Prompt" für Suno AI (max. 120 Zeichen, Instrumente, Genre, Vibe, Vocals).
+2. Einen vollständigen, rythmischen Songtext mit Suno-Metatags wie [Intro], [Verse 1], [Chorus], [Bridge], [Outro]. Bau alle Vorgaben und Namen des Nutzers flexibel und passend ein.
+
+WICHTIG: Antworte EXAKT in diesem Format und schreibe sonst keinen Text:
 
 [STYLE_PROMPT]
-Hier der englische Style-Prompt für Suno
+(Hier der englische Suno-Style)
 
 [LYRICS]
-Hier der Songtext mit den Klammer-Metatags`;
+(Hier der vollständige Songtext mit Metatags)`;
 
-  const userPrompt = `Genre: ${genre}\nVibe/Stimmung: ${vibe}\nThema/Inhalt: ${topic}`;
+  const userPrompt = `Genre/Stil: ${genre}\nStimmung: ${vibe}\nThema/Stichworte: ${topic}`;
 
   try {
     const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
@@ -82,8 +82,8 @@ Hier der Songtext mit den Klammer-Metatags`;
       const styleText = styleMatch ? styleMatch[1].trim() : `${genre}, ${vibe}`;
       const lyricsText = lyricsMatch ? lyricsMatch.trim() : fullContent;
 
-      document.getElementById('style-output').innerText = styleText;
-      document.getElementById('lyrics-output').innerText = lyricsText;
+      document.getElementById('style-output').value = styleText;
+      document.getElementById('lyrics-output').value = lyricsText;
       document.getElementById('output-section').classList.remove('hidden');
     } else {
       alert("Fehler bei der Generierung: " + (data.error?.message || "Unbekannter Fehler"));
@@ -97,7 +97,8 @@ Hier der Songtext mit den Klammer-Metatags`;
 }
 
 function copyToClipboard(elementId) {
-  const text = document.getElementById(elementId).innerText;
-  navigator.clipboard.writeText(text);
+  const textarea = document.getElementById(elementId);
+  textarea.select();
+  navigator.clipboard.writeText(textarea.value);
   alert("In die Zwischenablage kopiert! 📋");
 }

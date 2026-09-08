@@ -20,11 +20,30 @@
       <div>
         <label class="text-xs font-bold text-stone-300 block mb-1">Genre / Style</label>
         <select id="genre-select" class="w-full bg-stone-700 border border-stone-600 rounded-xl p-2.5 text-xs font-bold text-white focus:outline-none focus:border-red-500">
-          <option value="French Afrotrap, bouncy 808, fast brass, auto-tuned vocals">French Afrotrap 🇫🇷</option>
-          <option value="Romanian Manele, energetic accordion, fast percussion, emotional synth">Romanian Manele 🇷🇴</option>
-          <option value="Deutsch-Türkisch Rap, dark oriental trap beat, heavy bass, catchy hook">Deutsch-Türkisch Rap 🇩🇪🇹🇷</option>
-          <option value="90s Eurodance, fast synthesizer lead, female vocals, energetic 138 bpm">90s Eurodance 🎧</option>
-          <option value="Turkish Ballad, acoustic saz, melancholic strings, slow emotional rhythm">Turkish Ballad 🪕</option>
+          <optgroup label="Rap & Hip-Hop">
+            <option value="French Afrotrap, bouncy 808, fast brass, auto-tuned vocals">French Afrotrap 🇫🇷</option>
+            <option value="Deutsch-Türkisch Rap, dark oriental trap beat, heavy bass, catchy hook">Deutsch-Türkisch Rap 🇩🇪🇹🇷</option>
+            <option value="Deutschrap Drill, dark sliding 808, aggressive cadence, fast hi-hats">Deutschrap Drill 🔪</option>
+            <option value="Oldschool Boom Bap, 90s hip-hop beat, vinyl crackle, classic flow">Oldschool Boom Bap 🎤</option>
+            <option value="Melodic Trap, emotional guitar, auto-tune, heavy bass">Melodic Trap 🎸</option>
+          </optgroup>
+          <optgroup label="Balkan & Oriental">
+            <option value="Romanian Manele, energetic accordion, fast percussion, emotional synth">Romanian Manele 🇷🇴</option>
+            <option value="Balkan Trap, brass section, heavy oriental synth, energetic beat">Balkan Trap 🎺</option>
+            <option value="Turkish Pop/Rap, saz hooks, darbuka groove, modern trap bass">Turkish Pop-Rap 🪕</option>
+            <option value="Turkish Ballad, acoustic saz, melancholic strings, slow emotional rhythm">Turkish Ballad 🌧️</option>
+          </optgroup>
+          <optgroup label="Dance & Electronic">
+            <option value="90s Eurodance, fast synthesizer lead, female vocals, energetic 138 bpm">90s Eurodance 🎧</option>
+            <option value="Hands Up, Commercial Dance, pitched vocals, fast synth melody, 140 bpm">2000s Hands Up 🙌</option>
+            <option value="Techno Peaktime, driving acid bassline, hard kick, raw rave vibe">Hard Techno / Rave ⚡</option>
+            <option value="Deep House, smooth bassline, atmospheric pads, chill groove">Deep House 🍸</option>
+          </optgroup>
+          <optgroup label="Pop & Rock">
+            <option value="80s Synthwave, retro analog synth, drum machine, nostalgic vibe">80s Synthwave 🌌</option>
+            <option value="Pop Rock, energetic electric guitar, driving drums, anthem hook">Pop Rock 🎸</option>
+            <option value="Acoustic Singer-Songwriter, acoustic guitar, intimate vocals, warm feel">Acoustic Pop 🪕</option>
+          </optgroup>
         </select>
       </div>
 
@@ -34,12 +53,14 @@
           <option value="Summer Club Hit, energetic, party vibes">Sommer & Party 🎉</option>
           <option value="Melancholic, emotional, deep storyline">Melancholisch & Emotional 🌧️</option>
           <option value="Aggressive, high energy, fast flow">Aggressiv & Power ⚡</option>
+          <option value="Motivational, uplifting, inspiring anthem">Motivation & Power 💪</option>
+          <option value="Dark, mysterious, heavy atmosphere">Dunkel & Mystisch 🖤</option>
         </select>
       </div>
 
       <div>
-        <label class="text-xs font-bold text-stone-300 block mb-1">Thema / Stichworte</label>
-        <input type="text" id="topic-input" placeholder="z. B. Sommer im Garten, Durchhalten..." class="w-full bg-stone-700 border border-stone-600 rounded-xl p-2.5 text-xs font-bold text-white focus:outline-none focus:border-red-500" />
+        <label class="text-xs font-bold text-stone-300 block mb-1">Thema / Stichworte / Eigene Vorgaben</label>
+        <input type="text" id="topic-input" placeholder="z. B. Dino am Start, Sommer im Garten..." class="w-full bg-stone-700 border border-stone-600 rounded-xl p-2.5 text-xs font-bold text-white focus:outline-none focus:border-red-500" />
       </div>
 
       <button onclick="generateSong()" id="generate-btn" class="w-full bg-red-600 hover:bg-red-700 text-white font-extrabold p-3 rounded-2xl text-xs shadow-md transition-all">
@@ -52,19 +73,19 @@
       <!-- Suno Style Prompt -->
       <div class="bg-stone-800 p-4 rounded-3xl border border-stone-700 space-y-2 shadow-lg">
         <div class="flex justify-between items-center">
-          <span class="text-xs font-extrabold text-red-400 uppercase tracking-wider">Suno Style Prompt (English)</span>
+          <span class="text-xs font-extrabold text-red-400 uppercase tracking-wider">Suno Style Prompt (Bearbeitbar)</span>
           <button onclick="copyToClipboard('style-output')" class="bg-stone-700 hover:bg-stone-600 text-xs font-bold px-2.5 py-1 rounded-xl">📋 Kopieren</button>
         </div>
-        <p id="style-output" class="text-xs font-mono bg-stone-900 p-3 rounded-xl border border-stone-700/80 text-stone-200 select-all"></p>
+        <textarea id="style-output" rows="3" class="w-full text-xs font-mono bg-stone-900 p-3 rounded-xl border border-stone-700/80 text-stone-200 focus:outline-none focus:border-red-500 resize-y"></textarea>
       </div>
 
       <!-- Songtext -->
       <div class="bg-stone-800 p-4 rounded-3xl border border-stone-700 space-y-2 shadow-lg">
         <div class="flex justify-between items-center">
-          <span class="text-xs font-extrabold text-red-400 uppercase tracking-wider">Songtext (mit Suno-Tags)</span>
+          <span class="text-xs font-extrabold text-red-400 uppercase tracking-wider">Songtext (Bearbeitbar)</span>
           <button onclick="copyToClipboard('lyrics-output')" class="bg-stone-700 hover:bg-stone-600 text-xs font-bold px-2.5 py-1 rounded-xl">📋 Kopieren</button>
         </div>
-        <pre id="lyrics-output" class="text-xs font-mono bg-stone-900 p-3 rounded-xl border border-stone-700/80 text-stone-200 whitespace-pre-wrap select-all custom-scrollbar max-h-80 overflow-y-auto"></pre>
+        <textarea id="lyrics-output" rows="12" class="w-full text-xs font-mono bg-stone-900 p-3 rounded-xl border border-stone-700/80 text-stone-200 focus:outline-none focus:border-red-500 resize-y custom-scrollbar"></textarea>
       </div>
     </div>
 

@@ -23,7 +23,7 @@
         <label class="text-xs font-bold text-stone-300 block mb-1">Genre / Style</label>
         <select id="genre-select" class="w-full bg-stone-700 border border-stone-600 rounded-xl p-2.5 text-xs font-bold text-white focus:outline-none focus:border-red-500">
           <optgroup label="Balkan & Oriental & Osteuropa">
-            <option value="Balkan Pop-Ballad, acoustic guitar, melancholic accordion, emotional strings, slow sad melody">Balkan / Rumänien Ballade (Traurig) 🌧️</option>
+            <option value="Balkan Pop-Ballad, melancholic accordion, emotional strings, slow sad melody">Balkan / Rumänien Ballade (Traurig) 🌧️</option>
             <option value="Romanian Manele, energetic accordion, fast percussion, emotional synth">Romanian Manele (Party) 🇷🇴</option>
             <option value="Polish Disco Polo, fast synthesizer, catchy upbeat dance beat, energetic accordion">Disco Polo / Polish Dance 🇵🇱</option>
             <option value="Balkan Trap, brass section, heavy oriental synth, modern trap bass">Balkan Trap (Modern) 🎺</option>
@@ -35,12 +35,12 @@
             <option value="Deutsch-Türkisch Rap, dark oriental trap beat, heavy bass, catchy hook">Deutsch-Türkisch Rap 🇩🇪🇹🇷</option>
             <option value="Deutschrap Drill, dark sliding 808, aggressive cadence, fast hi-hats">Deutschrap Drill 🔪</option>
             <option value="Oldschool Boom Bap, 90s hip-hop beat, vinyl crackle, classic flow">Oldschool Boom Bap 🎤</option>
-            <option value="Melodic Trap, emotional guitar, heavy bass">Melodic Trap 🎸</option>
+            <option value="Melodic Trap, emotional melody, heavy bass">Melodic Trap 🎸</option>
           </optgroup>
           <optgroup label="Latin & Mediterranean">
             <option value="Reggaeton, dembow rhythm, catchy synth, urban latin beat">Reggaeton / Latin 🇪🇸</option>
             <option value="Italo Pop / Modern Trap, bouncy synth, catchy chorus, melodic vibe">Italo Pop / Modern Trap 🇮🇹</option>
-            <option value="Latin Trap, Spanish guitar, heavy 808 bass, dark vibe">Latin Trap 🎸</option>
+            <option value="Latin Trap, heavy 808 bass, dark vibe">Latin Trap 🎸</option>
           </optgroup>
           <optgroup label="Dance & Electronic">
             <option value="90s Eurodance, fast synthesizer lead, energetic rhythm">90s Eurodance 🎧</option>
@@ -50,10 +50,16 @@
           </optgroup>
           <optgroup label="Pop & Rock">
             <option value="80s Synthwave, retro analog synth, drum machine, nostalgic vibe">80s Synthwave 🌌</option>
-            <option value="Pop Rock, energetic electric guitar, driving drums, anthem hook">Pop Rock 🎸</option>
-            <option value="Acoustic Singer-Songwriter, acoustic guitar, intimate warm feel">Acoustic Pop 🪕</option>
+            <option value="Pop Rock, driving drums, anthem hook">Pop Rock 🎸</option>
+            <option value="Acoustic Singer-Songwriter, intimate warm feel">Acoustic Pop 🪕</option>
           </optgroup>
         </select>
+      </div>
+
+      <!-- Wunsch-Instrumente -->
+      <div>
+        <label class="text-xs font-bold text-stone-300 block mb-1">Eigene Instrumente / Sounds (Optional)</label>
+        <input type="text" id="instruments-input" placeholder="z. B. Klavier, Geige, E-Gitarre, Synth..." class="w-full bg-stone-700 border border-stone-600 rounded-xl p-2.5 text-xs font-bold text-white focus:outline-none focus:border-red-500" />
       </div>
 
       <!-- Feineinstellungen: Sprache, Stimme & Tempo -->

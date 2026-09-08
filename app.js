@@ -32,6 +32,7 @@ async function generateSong() {
   }
 
   const genre = document.getElementById('genre-select').value;
+  const customInstruments = document.getElementById('instruments-input').value.trim();
   const lang = document.getElementById('lang-select').value;
   const vocal = document.getElementById('vocal-select').value;
   const tempo = document.getElementById('tempo-select').value;
@@ -45,8 +46,8 @@ async function generateSong() {
 
 Erstelle basierend auf den Wünschen des Nutzers:
 1. Einen eingängigen Songtitel (maximal 4 Worte).
-2. Einen englischen "Style Prompt" für Suno AI (maximal 120 Zeichen, kombinierte Vorgaben aus Instrumenten, Vocals, Tempo und Vibe).
-3. Einen vollständigen, rythmischen Songtext IN DER ANGEGEBENEN SPRACHE mit Suno-Metatags wie [Intro], [Verse 1], [Chorus], [Bridge], [Outro].
+2. Einen englischen "Style Prompt" für Suno AI (maximal 120 Zeichen, kombinierte Vorgaben aus Instrumenten, Vocals, Tempo und Vibe). Wenn der Nutzer spezielle Instrumente angibt, nutze DIESE bevorzugt!
+3. Einen vollständigen, rythmischen Songtext IN DER ANGEGEBENEN SPRACHE (bei gemischten Sprachen wechsle flüssig zwischen den beiden Sprachen) mit Suno-Metatags wie [Intro], [Verse 1], [Chorus], [Bridge], [Outro].
 
 WICHTIG: Antworte EXAKT in diesem Format und schreibe sonst KEINEN zusätzlichen Text:
 
@@ -59,7 +60,10 @@ WICHTIG: Antworte EXAKT in diesem Format und schreibe sonst KEINEN zusätzlichen
 [LYRICS]
 (Hier der vollständige Songtext in der gewünschten Sprache mit Metatags)`;
 
-  const userPrompt = `Genre/Stil: ${genre}\nSprache des Songtexts: ${lang}\nGesang: ${vocal}\nTempo: ${tempo}\nStimmung: ${vibe}\nThema/Stichworte: ${topic}`;
+  let userPrompt = `Genre/Stil: ${genre}\nSprache des Songtexts: ${lang}\nGesang: ${vocal}\nTempo: ${tempo}\nStimmung: ${vibe}\nThema/Stichworte: ${topic}`;
+  if (customInstruments) {
+    userPrompt += `\nGewünschte Instrumente: ${customInstruments}`;
+  }
 
   try {
     const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {

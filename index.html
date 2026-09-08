@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="de" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Suno Prompt & Songwriter AI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-stone-900 text-stone-100 min-h-screen p-4 font-sans">
+  <div class="max-w-md mx-auto space-y-4">
+    
+    <!-- Header -->
+    <div class="bg-stone-800 p-4 rounded-3xl border border-stone-700 shadow-lg flex justify-between items-center">
+      <h1 class="text-base font-extrabold flex items-center gap-2">🎵 Suno Songwriter AI</h1>
+      <button onclick="changeApiKey()" class="text-xs font-bold text-amber-400 bg-amber-400/10 px-2.5 py-1 rounded-xl border border-amber-400/20">🔑 Key</button>
+    </div>
+
+    <!-- Einstellungen -->
+    <div class="bg-stone-800 p-4 rounded-3xl border border-stone-700 space-y-3 shadow-lg">
+      <div>
+        <label class="text-xs font-bold text-stone-300 block mb-1">Genre / Style</label>
+        <select id="genre-select" class="w-full bg-stone-700 border border-stone-600 rounded-xl p-2.5 text-xs font-bold text-white focus:outline-none focus:border-red-500">
+          <option value="French Afrotrap, bouncy 808, fast brass, auto-tuned vocals">French Afrotrap 🇫🇷</option>
+          <option value="Romanian Manele, energetic accordion, fast percussion, emotional synth">Romanian Manele 🇷🇴</option>
+          <option value="Deutsch-Türkisch Rap, dark oriental trap beat, heavy bass, catchy hook">Deutsch-Türkisch Rap 🇩🇪🇹🇷</option>
+          <option value="90s Eurodance, fast synthesizer lead, female vocals, energetic 138 bpm">90s Eurodance 🎧</option>
+          <option value="Turkish Ballad, acoustic saz, melancholic strings, slow emotional rhythm">Turkish Ballad 🪕</option>
+        </select>
+      </div>
+
+      <div>
+        <label class="text-xs font-bold text-stone-300 block mb-1">Stimmung / Vibe</label>
+        <select id="vibe-select" class="w-full bg-stone-700 border border-stone-600 rounded-xl p-2.5 text-xs font-bold text-white focus:outline-none focus:border-red-500">
+          <option value="Summer Club Hit, energetic, party vibes">Sommer & Party 🎉</option>
+          <option value="Melancholic, emotional, deep storyline">Melancholisch & Emotional 🌧️</option>
+          <option value="Aggressive, high energy, fast flow">Aggressiv & Power ⚡</option>
+        </select>
+      </div>
+
+      <div>
+        <label class="text-xs font-bold text-stone-300 block mb-1">Thema / Stichworte</label>
+        <input type="text" id="topic-input" placeholder="z. B. Sommer im Garten, Durchhalten..." class="w-full bg-stone-700 border border-stone-600 rounded-xl p-2.5 text-xs font-bold text-white focus:outline-none focus:border-red-500" />
+      </div>
+
+      <button onclick="generateSong()" id="generate-btn" class="w-full bg-red-600 hover:bg-red-700 text-white font-extrabold p-3 rounded-2xl text-xs shadow-md transition-all">
+        🚀 Song & Suno Prompt Generieren
+      </button>
+    </div>
+
+    <!-- Output Bereich -->
+    <div id="output-section" class="space-y-3 hidden">
+      <!-- Suno Style Prompt -->
+      <div class="bg-stone-800 p-4 rounded-3xl border border-stone-700 space-y-2 shadow-lg">
+        <div class="flex justify-between items-center">
+          <span class="text-xs font-extrabold text-red-400 uppercase tracking-wider">Suno Style Prompt (English)</span>
+          <button onclick="copyToClipboard('style-output')" class="bg-stone-700 hover:bg-stone-600 text-xs font-bold px-2.5 py-1 rounded-xl">📋 Kopieren</button>
+        </div>
+        <p id="style-output" class="text-xs font-mono bg-stone-900 p-3 rounded-xl border border-stone-700/80 text-stone-200 select-all"></p>
+      </div>
+
+      <!-- Songtext -->
+      <div class="bg-stone-800 p-4 rounded-3xl border border-stone-700 space-y-2 shadow-lg">
+        <div class="flex justify-between items-center">
+          <span class="text-xs font-extrabold text-red-400 uppercase tracking-wider">Songtext (mit Suno-Tags)</span>
+          <button onclick="copyToClipboard('lyrics-output')" class="bg-stone-700 hover:bg-stone-600 text-xs font-bold px-2.5 py-1 rounded-xl">📋 Kopieren</button>
+        </div>
+        <pre id="lyrics-output" class="text-xs font-mono bg-stone-900 p-3 rounded-xl border border-stone-700/80 text-stone-200 whitespace-pre-wrap select-all custom-scrollbar max-h-80 overflow-y-auto"></pre>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
